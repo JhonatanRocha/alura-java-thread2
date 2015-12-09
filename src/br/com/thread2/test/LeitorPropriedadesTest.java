@@ -27,12 +27,26 @@ public class LeitorPropriedadesTest {
 		
 		Thread thread3 = new Thread(new LeitorPropriedades(properties3, "name-list3.txt"));
 		thread3.setUncaughtExceptionHandler(threadExceptionHandler);
+		
+		thread1.start();
+		thread2.start();
+		thread3.start();
     }
     
     private void lerPropriedadesEmParalelo(Properties properties, String nomeArquivo) {
         LeitorPropriedades leitor1 = new LeitorPropriedades(properties, nomeArquivo);
-        Thread t1 = new Thread(leitor1);
-        t1.setUncaughtExceptionHandler(threadExceptionHandler);
-        t1.start();
+        Thread thread1 = new Thread(leitor1);
+        thread1.setUncaughtExceptionHandler(threadExceptionHandler);
+        thread1.start();
+        
+        LeitorPropriedades leitor2 = new LeitorPropriedades(properties, nomeArquivo);
+        Thread thread2 = new Thread(leitor2);
+        thread2.setUncaughtExceptionHandler(threadExceptionHandler);
+        thread2.start();
+        
+        LeitorPropriedades leitor3 = new LeitorPropriedades(properties, nomeArquivo);
+        Thread thread3 = new Thread(leitor3);
+        thread3.setUncaughtExceptionHandler(threadExceptionHandler);
+        thread3.start();
     }
 }
