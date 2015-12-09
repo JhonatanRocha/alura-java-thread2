@@ -48,5 +48,15 @@ public class LeitorPropriedadesTest {
         Thread thread3 = new Thread(leitor3);
         thread3.setUncaughtExceptionHandler(threadExceptionHandler);
         thread3.start();
+        
+        LeitorPropriedades leitor2 = new LeitorPropriedades(properties, nomeArquivo);
+        Thread t2 = new Thread(leitor2);
+        t2.setUncaughtExceptionHandler(threadExceptionHandler);
+        t2.start();
+        
+        LeitorPropriedades leitor3 = new LeitorPropriedades(properties, nomeArquivo);
+        Thread t3 = new Thread(leitor3);
+        t3.setUncaughtExceptionHandler(threadExceptionHandler);
+        t3.start();
     }
 }
